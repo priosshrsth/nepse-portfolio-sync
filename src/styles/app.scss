@@ -1,0 +1,109 @@
+@import "variables";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /* Root Variables */
+  * {
+    /* Apply border style */
+    border-color: var(--border);
+  }
+
+  body {
+    /* Apply background and text color */
+    background-color: var(--background);
+    color: var(--foreground);
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    /* Apply color and font family */
+    color: var(--foreground);
+    font-family: "Avenir LT Std", Helvetica, Arial, sans-serif;
+  }
+
+  input, textarea {
+    @apply accent-transparent border-0 outline-0 focus-visible:outline-0 bg-transparent h-full w-full text-foreground placeholder-gray-500 dark:placeholder-gray-600;
+    outline: 0!important;
+  }
+
+  .container-fluid {
+    @apply px-4 sm:px-8 md:px-12 mx-auto;
+  }
+
+}
+
+.title {
+  color: #ed9121;
+  font-family: var(--font-avenir), Helvetica, Arial, sans-serif;
+  font-size: 2.19rem;
+  font-weight: 900 !important;
+  letter-spacing: 0.75px;
+  line-height: 48px;
+}
+
+.title .black {
+  color: black;
+}
+
+.dark {
+   .title .black {
+     color: white;
+   }
+ }
+
+.center-aligned-swiper .swiper-wrapper {
+  align-items: center;
+}
+
+.swiper-slide {
+  display: flex;
+  justify-content: center;
+}
+
+#translator {
+  position: relative;
+  padding-top: 3rem;
+  display: flex;
+  gap: 20px;
+  width: 14rem;
+  align-items: center;
+  vertical-align: middle;
+  height: 42px;
+  line-height: 42px;
+}
+
+#translator *:not(select):not(option):not(span):not(img):not(a) {
+  display: contents !important;
+}
+
+#translator a,
+#translator span {
+  display: inline-flex;
+  align-items: center;
+  height: 42px;
+}
+
+#translator select {
+  position: absolute;
+  border-radius: 0.25rem;
+  left: 50%;
+  top: 0;
+  width: 100%;
+  transform: translateX(-50%);
+  padding: 0.5rem;
+}
+
+#translator select ~ * {
+  display: none;
+}
+
+
+.impact-image {
+  object-position: right -2rem bottom 0;
+}

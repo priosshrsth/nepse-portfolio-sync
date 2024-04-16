@@ -1,12 +1,28 @@
 import "src/styles/globals.css";
 
-import { Inter } from "next/font/google";
+import { Inter, Rubik, Playfair } from "next/font/google";
 
 import { TRPCReactProvider } from "src/trpc/react";
+import type { ReactNode } from "react";
+import Script from "next/script";
+import { ClientWrapper } from "@src/components/common/ClientWrapper";
 
 const inter = Inter({
   subsets: ["latin"],
-  variable: "--font-sans",
+  display: "swap",
+  variable: "--font-thin",
+});
+
+const rubik = Rubik({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-default",
+});
+
+const playFair = Playfair({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-styled",
 });
 
 export const metadata = {
@@ -15,11 +31,30 @@ export const metadata = {
   icons: [{ rel: "icon", url: "/favicon.ico" }],
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="en">
-      <body className={`font-sans ${inter.variable}`}>
-        <TRPCReactProvider>{children}</TRPCReactProvider>
+    <html lang="en" className={`${inter.variable} ${playFair.variable} ${rubik.variable}`}>
+      <body suppressHydrationWarning className={"m-0 p-0 font-default"}>
+        <Script id={"theme-support"} strategy={"beforeInteractive"}>
+          {`
+            function handleColorSchemeChange(event) {
+              const prefersDarkMode = event.matches;
+        
+              if (prefersDarkMode) {
+                document.body.classList.add("dark");
+              } else {
+                document.body.classList.remove("dark");
+              }
+            }
+
+            const colorSchemeQuery = window.matchMedia("(prefers-color-scheme: dark)");
+            colorSchemeQuery.addEventListener("change", handleColorSchemeChange);
+            handleColorSchemeChange(colorSchemeQuery);
+        `}
+        </Script>
+        <ClientWrapper>
+          <TRPCReactProvider>{children}</TRPCReactProvider>
+        </ClientWrapper>
       </body>
     </html>
   );

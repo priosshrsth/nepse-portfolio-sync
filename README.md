@@ -1,6 +1,9 @@
 # Create T3 App
 
-This is a [T3 Stack](https://create.t3.gg/) project bootstrapped with `create-t3-app`.
+This apps was bootstrapped using [`create-t3-app`](https://create.t3.gg/).
+
+## Tech Stack
+- Bun - v1.1.3
 
 ## What's next? How do I make an app with this?
 
