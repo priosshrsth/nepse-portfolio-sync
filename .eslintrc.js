@@ -1,3 +1,4 @@
+/* eslint-disable no-process-env */
 /** @type {import("eslint").Linter.Config} */
 const config = {
   root: true,
@@ -74,10 +75,10 @@ const config = {
             name: "next/image",
             message: "Please use custom `NextImage` component instead.",
           },
-          {
-            name: "next/link",
-            message: "Please use custom `NextLink` component instead.",
-          },
+          // {
+          //   name: "next/link",
+          //   message: "Please use custom `NextLink` component instead.",
+          // },
           "@iconify/react",
           {
             name: "next/navigation",
@@ -108,5 +109,6 @@ const config = {
     "no-debugger": (process.env.NODE_ENV || "development") === "development" ? "warn" : "error",
     "no-process-env": "error",
   },
-}
+};
+
 module.exports = config;
